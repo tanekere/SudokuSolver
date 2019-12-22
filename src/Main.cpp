@@ -3,8 +3,13 @@
 #include "solvehelp.h"
 #include <array>
 #include <thread>
+#include "json.hpp"
+#include <fstream>
+#include <sstream>
 
-int boardSource[][9] = {
+using json = nlohmann::json;
+/*
+json boardSource = {
     {7,8,0,4,0,0,1,2,0},
     {6,0,0,0,7,5,0,0,9},
     {0,0,0,6,0,1,0,7,8},
@@ -15,6 +20,8 @@ int boardSource[][9] = {
     {1,2,0,0,0,7,4,0,0},
     {0,4,9,2,0,6,0,0,7}
 };
+*/
+json boardSource;
 
 int game();
 bool back_solver(int boardSource[][9]);
@@ -22,6 +29,11 @@ void solve();
 
 int main()
 {
+	std::ifstream in("input.txt");
+	in >> boardSource;
+	in.close();
+
+
 	std::thread t1(game);
 	std::thread t2(solve);
 	t2.join();
@@ -38,29 +50,6 @@ void solve()
 
 	if (!SolveSudoku(boardSource) == true)
 		cout << "No solution exists";
-}
-
-bool back_solver(int boardSource[][9])
-{
-
-	int x,y;
-	if(getEmpty(boardSource,x,y))
-		return true;
-
-	for (int i = 1; i < 10; i++)
-	{
-		if (valid(boardSource,i,x,y))
-		{
-			boardSource[x][y]==i;
-
-			if(back_solver(boardSource))
-				return true;
-
-			boardSource[x][y] = 0;
-		}
-	}
-	return false;
-
 }
 
 int game()

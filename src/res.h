@@ -1,6 +1,9 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <array>
+#include "json.hpp"
+
+using json = nlohmann::json;
 
 class Square
 {
@@ -56,7 +59,7 @@ class Board
 public:
 	Square numArray[9][9];
 
-	Board(int values[][9])
+	Board(json &values)
 	{
 		for (int i = 0; i < 9; i++)
 		{
@@ -76,7 +79,7 @@ public:
 		}
 	}
 
-	void update(int values[][9])
+	void update(json &values)
 	{
 		for (int i = 0; i < 9; i++)
 		{
@@ -88,7 +91,7 @@ public:
 	}
 
 
-	void drawTo(sf::RenderWindow &window)
+void drawTo(sf::RenderWindow &window)
 	{
 		for (int i = 0; i < 9; i++)
 		{
