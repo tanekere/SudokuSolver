@@ -1,5 +1,6 @@
 #include "Main.hpp"
 #include "res.h"
+#include "solvehelp.h"
 #include <array>
 #include <thread>
 
@@ -16,11 +17,50 @@ int boardSource[][9] = {
 };
 
 int game();
+bool back_solver(int boardSource[][9]);
+void solve();
 
 int main()
 {
 	std::thread t1(game);
+	std::thread t2(solve);
+	t2.join();
 	t1.join();
+
+}
+
+void solve()
+{
+	while(!sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+		{
+			sf::sleep(sf::milliseconds(1));
+		}
+
+	if (!SolveSudoku(boardSource) == true)
+		cout << "No solution exists";
+}
+
+bool back_solver(int boardSource[][9])
+{
+
+	int x,y;
+	if(getEmpty(boardSource,x,y))
+		return true;
+
+	for (int i = 1; i < 10; i++)
+	{
+		if (valid(boardSource,i,x,y))
+		{
+			boardSource[x][y]==i;
+
+			if(back_solver(boardSource))
+				return true;
+
+			boardSource[x][y] = 0;
+		}
+	}
+	return false;
+
 }
 
 int game()
@@ -41,7 +81,7 @@ int game()
 
 
 
-	sf::RenderWindow window(sf::VideoMode(800,600), "SFML works!",sf::Style::Titlebar | sf::Style::Close);
+	sf::RenderWindow window(sf::VideoMode(300,300), "PREESS SPACE TO BEGIN",sf::Style::Titlebar | sf::Style::Close);
 // #ifdef SFML_SYSTEM_WINDOWS
 //	__windowsHelper.setIcon(window.getSystemHandle());
 // #endif

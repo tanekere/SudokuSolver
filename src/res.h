@@ -7,7 +7,6 @@ class Square
 	int value=0;
 public:
 	bool isModdable;
-	bool isPermanant;
 
 	sf::Texture texSheet;
 	sf::Sprite valueSprite;
@@ -69,11 +68,11 @@ public:
 				//numArray[i][j].setPos({0,0});
 				numArray[i][j].setValue(values[i][j]);
 				if(values[i][j]==0){
+					numArray[i][j].isModdable==true;
+				}else{
 					numArray[i][j].isModdable==false;
-					numArray[i][j].isPermanant==true;
 				}
 			}
-			std::cout<<std::endl;
 		}
 	}
 
@@ -85,7 +84,6 @@ public:
 			{
 				numArray[i][j].setValue(values[i][j]);
 			}
-			std::cout<<std::endl;
 		}
 	}
 

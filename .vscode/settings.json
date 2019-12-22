@@ -121,22 +121,22 @@
 		"activityBar.inactiveForeground": "#15202b99",
 		"activityBarBadge.background": "#3f88c0",
 		"activityBarBadge.foreground": "#e7e7e7",
-		"titleBar.activeBackground": "#8ac242",
-		"titleBar.inactiveBackground": "#8ac24299",
+		"titleBar.activeBackground": "#8ac143",
+		"titleBar.inactiveBackground": "#8ac14399",
 		"titleBar.activeForeground": "#15202b",
 		"titleBar.inactiveForeground": "#15202b99",
-		"statusBar.background": "#8ac242",
-		"statusBarItem.hoverBackground": "#6f9e33",
+		"statusBar.background": "#8ac143",
+		"statusBarItem.hoverBackground": "#6f9d34",
 		"statusBar.foreground": "#15202b"
 	},
 
 	"[applescript]": {
 		"files.encoding": "utf8"
 	},
-	"peacock.color": "#8ac242",
 	"editor.renderWhitespace": "boundary",
 	"editor.renderIndentGuides": false,
-	"editor.fontSize": 16
+	"editor.fontSize": 16,
+	"peacock.color": "#8ac143"
 
 
 }
