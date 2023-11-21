@@ -8,19 +8,19 @@
 #include <sstream>
 
 using json = nlohmann::json;
-/*
-json boardSource = {
-    {7,8,0,4,0,0,1,2,0},
-    {6,0,0,0,7,5,0,0,9},
-    {0,0,0,6,0,1,0,7,8},
-    {0,0,7,0,4,0,2,6,0},
-    {0,0,1,0,5,0,9,3,0},
-    {9,0,4,0,6,0,0,0,5},
-    {0,7,0,3,0,0,0,1,2},
-    {1,2,0,0,0,7,4,0,0},
-    {0,4,9,2,0,6,0,0,7}
-};
-*/
+
+// json boardSource = {
+//     {7,8,0,4,0,0,1,2,0},
+//     {6,0,0,0,7,5,0,0,9},
+//     {0,0,0,6,0,1,0,7,8},
+//     {0,0,7,0,4,0,2,6,0},
+//     {0,0,1,0,5,0,9,3,0},
+//     {9,0,4,0,6,0,0,0,5},
+//     {0,7,0,3,0,0,0,1,2},
+//     {1,2,0,0,0,7,4,0,0},
+//     {0,4,9,2,0,6,0,0,7}
+// };
+
 json boardSource;
 
 int game();
@@ -29,7 +29,7 @@ void solve();
 
 int main()
 {
-	std::ifstream in("input.txt");
+	std::ifstream in("content/input.txt");
 	in >> boardSource;
 	in.close();
 
@@ -58,22 +58,8 @@ int game()
 	std::cout << "Hello World!" << std::endl;
 #endif
 
-//***********DEBUG VARIABLES**************************
-
-
-//****************************************************
-
-// #if defined(_DEBUG)
-// 	std::cout << "Hello World!" << std::endl;
-// #endif
-
-
-
-
 	sf::RenderWindow window(sf::VideoMode(300,300), "PREESS SPACE TO BEGIN",sf::Style::Titlebar | sf::Style::Close);
-// #ifdef SFML_SYSTEM_WINDOWS
-//	__windowsHelper.setIcon(window.getSystemHandle());
-// #endif
+
 
 	sf::CircleShape shape(window.getSize().x/2);
 	shape.setFillColor(sf::Color::White);
@@ -84,8 +70,6 @@ int game()
 
 	sf::Event event;
 
-
-
 	Board board(boardSource);
 
 	while (window.isOpen())
@@ -95,12 +79,6 @@ int game()
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}
-///////////////////////////////////////////////////////////////////////////
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-		{
-			;
-		}
-///////////////////////////////////////////////////////////////////////////
 
 		board.update(boardSource);
 

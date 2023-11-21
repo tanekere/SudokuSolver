@@ -28,9 +28,6 @@ public:
 		textureBounds= sf::IntRect(0,0,4,5);
 		valueSprite.setTextureRect( textureBounds);
 		valueSprite.setScale(sf::Vector2f(5.f, 5.f));
-		///////////////////////////////////
-		//valueSprite.setPosition({0,0});
-		///////////////////////////////////
 	}
 
 	bool setValue(int _value){
@@ -68,7 +65,6 @@ public:
 				std::cout<<values[i][j]<<' ';
 				std::cout<<'{'<<i*4*5.f<<','<<j*5*5.f<<'}';
 				numArray[i][j].setPos({   j*5*5.f  +   5.f*j   ,   i*4*5.f + 10.f*i   });
-				//numArray[i][j].setPos({0,0});
 				numArray[i][j].setValue(values[i][j]);
 				if(values[i][j]==0){
 					numArray[i][j].isModdable==true;
